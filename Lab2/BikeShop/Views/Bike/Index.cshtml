@@ -1,0 +1,30 @@
+@model List<BikeShop.Models.BikeEntity>
+
+@{
+    ViewBag.Title = "Bike Shop";
+}
+
+<h2>Available Bikes</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Model</th>
+            <th>Type</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var bike in Model)
+        {
+            <tr>
+                <td>@bike.Model</td>
+                <td>$@bike.Price</td>
+                <td>
+                    <a href="@Url.Action("Order", "Bike", new { model = bike.Model })">Order</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
