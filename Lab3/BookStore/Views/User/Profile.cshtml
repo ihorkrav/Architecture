@@ -1,0 +1,11 @@
+@model BookStore.Core.Entities.User
+
+<h2>@Model.Username's Profile</h2>
+
+<h4>Ordered Books</h4>
+<ul>
+@foreach (var order in Model.Orders)
+{
+    <li>@order.Book.Title - $@order.Book.Price</li>
+}
+</ul>

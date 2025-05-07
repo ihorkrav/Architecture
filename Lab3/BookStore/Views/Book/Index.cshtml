@@ -1,0 +1,28 @@
+@model List<BookStore.Core.Entities.Book>
+
+<h2>Available Books</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Price ($)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var book in Model)
+    {
+        <tr>
+            <td>@book.Title</td>
+            <td>@book.Price</td>
+            <td>
+                <form method="post" asp-action="Order" asp-controller="Book">
+                    <input type="hidden" name="id" value="@book.Id" />
+                    <button type="submit" class="btn btn-sm btn-primary">Order</button>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

@@ -1,0 +1,26 @@
+@model BookStore.Core.Entities.User
+
+@{
+    ViewData["Title"] = "User Profile";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>Welcome, @Model.Username!</p>
+
+<h3>Your Orders</h3>
+@if (Model.Orders != null && Model.Orders.Count > 0)
+{
+    <ul>
+        @foreach (var order in Model.Orders)
+        {
+            <li>@order.Book.Title - @order.OrderDate</li>
+        }
+    </ul>
+}
+else
+{
+    <p>You have no orders yet.</p>
+}
+
+<a href="/Book/Index">Browse Books</a>
